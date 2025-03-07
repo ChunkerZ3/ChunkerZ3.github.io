@@ -16,6 +16,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            flex-direction: column;
         }
 
         h1 {
@@ -25,10 +26,26 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
+        /* Container for Scoreboard and Images */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Image Styles */
+        .side-image {
+            width: 200px; /* Adjust as needed */
+            height: auto;
+            margin: 0 20px; /* Space between images and scoreboard */
+        }
+
         /* Table Styles */
         table {
-            width: 80%;
-            max-width: 800px;
+            width: 60%; /* Adjust as needed */
             margin: 20px auto;
             border-collapse: collapse;
             background: rgba(255, 255, 255, 0.1);
@@ -57,57 +74,29 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .side-image {
+                width: 150px; /* Smaller images for mobile */
+                margin: 20px 0; /* Stack images above and below the scoreboard */
             }
 
             table {
-                width: 95%;
+                width: 90%; /* Full width on smaller screens */
             }
-
-            th, td {
-                padding: 10px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        table {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        /* Refresh Button */
-        .refresh-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: white;
-            background: #FFD700;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .refresh-button:hover {
-            background: #e6b800;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Disc Golf Fantasy League Scoreboard</h1>
+    <h1>Disc Golf Fantasy League Scoreboard</h1>
+    <div class="container">
+        <!-- Left Image -->
+        <img src="https://via.placeholder.com/200" alt="Left Image" class="side-image">
+
+        <!-- Scoreboard -->
         <table id="scoreboard">
             <thead>
                 <tr>
@@ -117,7 +106,9 @@
             </thead>
             <tbody></tbody>
         </table>
-        <button class="refresh-button" onclick="fetchScoreboard()">Refresh Scores</button>
+
+        <!-- Right Image -->
+        <img src="https://pushtherock.org/wp-content/uploads/2022/05/PDGAWorlds_MPO_R5_Khuv-141-819x1024.jpg">
     </div>
 
     <script>
